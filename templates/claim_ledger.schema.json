@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LouisCaiKM7/himcm-o-paper-skill/main/templates/claim_ledger.schema.json",
+  "title": "HiMCM claim ledger",
+  "type": "object",
+  "required": ["claims"],
+  "properties": {
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["claim_id", "claim", "epistemic_status", "metric", "units", "scope", "model_id", "evidence", "verification", "allowed_wording"],
+        "properties": {
+          "claim_id": {"type": "string", "minLength": 1},
+          "claim": {"type": "string", "minLength": 1},
+          "epistemic_status": {"enum": ["OBSERVED", "SOURCE_FACT", "ASSUMED", "DERIVED", "ESTIMATED", "SIMULATED", "OPTIMIZED_EXACT", "BEST_FOUND", "BOUNDED", "SCENARIO", "RECOMMENDED", "NOT_IDENTIFIED"]},
+          "metric": {"type": "string"},
+          "units": {"type": "string"},
+          "scope": {"type": "string"},
+          "scenario": {"type": "string"},
+          "model_id": {"type": "string"},
+          "evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "verification": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "uncertainty_or_limitation": {"type": "string"},
+          "allowed_wording": {"type": "string", "minLength": 1},
+          "paper_locations": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

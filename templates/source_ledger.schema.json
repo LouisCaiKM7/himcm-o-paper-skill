@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LouisCaiKM7/himcm-o-paper-skill/main/templates/source_ledger.schema.json",
+  "title": "Source and Assumption Ledger",
+  "description": "Field-level provenance, applicability, transformations, and uncertainty for model inputs.",
+  "type": "object",
+  "required": ["ledger_version", "entries"],
+  "properties": {
+    "ledger_version": {"type": "string", "minLength": 1},
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["entry_id", "quantity", "epistemic_status", "value", "unit", "used_by"],
+        "properties": {
+          "entry_id": {"type": "string", "minLength": 1},
+          "quantity": {"type": "string", "minLength": 1},
+          "epistemic_status": {
+            "enum": ["OBSERVED", "SOURCED", "ASSUMED", "DERIVED", "ESTIMATED", "SIMULATED", "OPTIMIZED", "BOUNDED", "RECOMMENDED"]
+          },
+          "value": {},
+          "unit": {"type": "string"},
+          "source_locator": {"type": ["string", "null"]},
+          "source_date": {"type": ["string", "null"]},
+          "accessed_date": {"type": ["string", "null"]},
+          "population": {"type": ["string", "null"]},
+          "time_scope": {"type": ["string", "null"]},
+          "spatial_scope": {"type": ["string", "null"]},
+          "transformation": {"type": ["string", "null"]},
+          "uncertainty": {"type": ["string", "null"]},
+          "substitution_id": {"type": ["string", "null"]},
+          "used_by": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "applicability_limit": {"type": ["string", "null"]}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

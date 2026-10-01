@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/LouisCaiKM7/himcm-o-paper-skill/main/templates/problem_analysis.schema.json",
+  "title": "HiMCM problem analysis",
+  "type": "object",
+  "required": ["problem", "requirements", "missing_inputs"],
+  "properties": {
+    "problem": {
+      "type": "object",
+      "required": ["contest", "year", "problem", "title"],
+      "properties": {
+        "contest": {"type": "string"},
+        "year": {"type": "integer"},
+        "problem": {"type": "string"},
+        "title": {"type": "string"}
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "prompt_clause", "task_type", "decision_user", "requested_output", "scope", "metric", "units", "completion_rule", "status"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "prompt_clause": {"type": "string", "minLength": 1},
+          "task_type": {"type": "string", "minLength": 1},
+          "decision_user": {"type": "string", "minLength": 1},
+          "requested_output": {"type": "string", "minLength": 1},
+          "scope": {"type": "string", "minLength": 1},
+          "metric": {"type": "string", "minLength": 1},
+          "units": {"type": "string", "minLength": 1},
+          "direction": {"type": ["string", "null"]},
+          "constraints": {"type": "array", "items": {"type": "string"}},
+          "completion_rule": {"type": "string", "minLength": 1},
+          "model_owner": {"type": ["string", "null"]},
+          "evidence": {"type": ["string", "null"]},
+          "paper_location": {"type": ["string", "null"]},
+          "answer": {"type": ["string", "null"]},
+          "status": {"enum": ["OPEN", "MODELED", "VERIFIED", "ANSWERED", "BLOCKED"]}
+        }
+      }
+    },
+    "missing_inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["quantity", "why_material", "handling", "could_flip_decision"],
+        "properties": {
+          "quantity": {"type": "string"},
+          "why_material": {"type": "string"},
+          "handling": {"type": "string"},
+          "could_flip_decision": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

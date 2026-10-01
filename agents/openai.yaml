@@ -1,0 +1,7 @@
+interface:
+  display_name: "HiMCM Outstanding Paper"
+  short_description: "Build and audit evidence-bound HiMCM papers"
+  default_prompt: "Use $himcm-o-paper to build or audit this HiMCM solution as a coherent, reproducible, rule-compliant, Outstanding-ready LaTeX/PDF paper."
+policy:
+  allow_implicit_invocation: true
+

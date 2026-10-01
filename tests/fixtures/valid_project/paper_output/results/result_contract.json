@@ -1,0 +1,1 @@
+{"run_id":"run-1","model_id":"M1","status":"VALID","results":[{"result_id":"R1","value":42,"unit":"1"}],"checks":[{"check_id":"V1","status":"PASS","evidence":"fixture"}]}
